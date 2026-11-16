@@ -1,6 +1,7 @@
 # ms-audit
 
-Auditoria / timeline de Pedidos360. Java 21 / Spring Boot, PostgreSQL y Liquibase.
+Auditoria / timeline de Pedidos360. Java 21 / Spring Boot y Liquibase. En produccion usa el RDS MySQL compartido (base `audit_db`,
+creada al arrancar); el compose general usa PostgreSQL.
 
 Consume `audit.timeline` (publicado por ms-orders) y guarda quien / que / cuando / desde donde.
 Tras 3 reintentos el mensaje va a `audit.timeline.ms-audit.DLT` con los headers de error
@@ -10,11 +11,11 @@ repetidos se ignoran por `eventId`.
 ## Ejecutar
 
 ```sh
-docker compose up -d          # PostgreSQL en 5434
+docker compose up -d          # MySQL en 3306
 ./mvnw spring-boot:run        # Kafka en localhost:9092 (compose general)
 ```
 
-Configuracion: DB_HOST, DB_PORT, DB_NAME, DB_USERNAME, DB_PASSWORD, SPRING_KAFKA_BOOTSTRAP_SERVERS,
+Configuracion: DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, SPRING_KAFKA_BOOTSTRAP_SERVERS,
 SERVER_PORT, ENTRA_ISSUER, ENTRA_AUDIENCE.
 
 ## API (solo lectura, rol Admin)

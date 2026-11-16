@@ -67,10 +67,10 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
           ECR_REPO: ${{ secrets.ECR_REPO_URL_MS_AUDIT }}
-          DB_HOST: ${{ secrets.AUDIT_DB_HOST }}
-          DB_PORT: ${{ secrets.AUDIT_DB_PORT }}
-          DB_USERNAME: ${{ secrets.AUDIT_DB_USERNAME }}
-          DB_PASSWORD: ${{ secrets.AUDIT_DB_PASSWORD }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           KAFKA_BOOTSTRAP_SERVERS: ${{ secrets.KAFKA_BOOTSTRAP_SERVERS }}
         with:
           host: ${{ secrets.EC2_HOST }}
